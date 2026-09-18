@@ -1,0 +1,16 @@
+/* eslint-disable no-console */
+import fs from 'fs';
+import path from 'path';
+import { pool } from './pool';
+
+async function migrate(): Promise<void> {
+  const sql = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf-8');
+  await pool.query(sql);
+  console.log('Migration applied successfully.');
+  await pool.end();
+}
+
+migrate().catch((err) => {
+  console.error('Migration failed:', err);
+  process.exit(1);
+});

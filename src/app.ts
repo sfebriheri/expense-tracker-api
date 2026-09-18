@@ -18,6 +18,19 @@ export function createApp(db: Db): Express {
   app.use(cors());
   app.use(express.json());
 
+  app.get('/', (_req, res) => {
+    res.status(200).json({ 
+      message: 'Expense Tracker API',
+      version: '1.0.0',
+      endpoints: {
+        health: '/health',
+        auth: '/api/auth',
+        categories: '/api/categories',
+        expenses: '/api/expenses'
+      }
+    });
+  });
+
   app.get('/health', (_req, res) => {
     res.status(200).json({ status: 'ok' });
   });

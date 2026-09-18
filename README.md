@@ -108,4 +108,3 @@ deliberately left out (and why) is listed in
 ## License
 
 MIT — see [`LICENSE`](LICENSE).
-# expense-tracker-api
